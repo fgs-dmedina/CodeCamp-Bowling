@@ -5,6 +5,8 @@
 ccb/lib64
 ccb/pyvenv.cfg
 ccb/share/*
+ccb/__pycache__/
+ccb/.vscode/
 
 # User-specific files
 *.suo
