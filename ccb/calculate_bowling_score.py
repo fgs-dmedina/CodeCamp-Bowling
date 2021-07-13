@@ -17,21 +17,22 @@ def calculate_bowling_score(rolls: str) -> int:
     frame = 1
 
     for i, roll in enumerate(all_rolls):
-        
         if frame == 11:
             break
 
         is_roll_spare = original_input[i] == '/'
-        is_roll_strike = roll == ALL_PINS
+        is_roll_strike = original_input[i] == 'X'
 
-        is_second_last_roll = roll == all_rolls[-2]
-        is_final_roll = roll == all_rolls[-1]
+        is_second_last_roll = i == len(all_rolls) - 2
+        is_final_roll = i == len(all_rolls) - 1
 
         if is_roll_strike:
 
             strike_bonus = int(0)
 
-            if is_second_last_roll or is_final_roll:
+            if is_second_last_roll:
+                strike_bonus = int(all_rolls[i + 1])
+            elif is_final_roll:
                 strike_bonus = ALL_PINS
             else:
                 strike_bonus = int(all_rolls[i + 1] + all_rolls[i + 2])
@@ -46,9 +47,4 @@ def calculate_bowling_score(rolls: str) -> int:
 
         game_score += roll
 
-    print('Final game score: ' + str(game_score))
     return game_score
-
-
-if __name__ == '__main__':
-    calculate_bowling_score('5/5/5/5/5/5/5/5/5/5/5')
