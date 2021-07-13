@@ -12,7 +12,12 @@ def convert_string_to_integer_list(string: str) -> list:
             output[i] = 0
         
         if is_rune_spare:
-            previous = int(string[i - 1])
+            previous = -1 
+            if string[i - 1] == '-':
+                previous = 0
+            else:
+                previous = int(string[i - 1])
+                
             output[i] = (10 - previous)
 
         if is_rune_strike:
