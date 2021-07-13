@@ -23,6 +23,3 @@ def convert_string_to_integer_list(string: str) -> list:
             output[i] = int(rune)
 
     return output
-
-if __name__ == '__main__':
-    convert_string_to_integer_list('5/5/5/5/5/5/5/5/5/5/5')
