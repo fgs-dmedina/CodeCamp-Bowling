@@ -8,3 +8,6 @@ def test_all_ones_returns_twenty():
 
 def test_all_non_spares_returns_ninety():
     assert calculate_bowling_score('246813579-246813579-') == 90
+
+def test_fives_with_spares_returns_one_fifty():
+    assert calculate_bowling_score('5/5/5/5/5/5/5/5/5/5/5') == 150
