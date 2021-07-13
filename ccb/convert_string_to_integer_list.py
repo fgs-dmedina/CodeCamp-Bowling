@@ -1,0 +1,28 @@
+def convert_string_to_integer_list(string: str) -> list:
+
+    output = [-1 for _ in range(len(string))]
+
+    for i, rune in enumerate(string):
+        
+        is_rune_miss = rune == '-'
+        is_rune_spare = rune == '/'
+        is_rune_strike = rune == 'X'
+
+        if is_rune_miss:
+            output[i] = 0
+        
+        if is_rune_spare:
+            previous = int(string[i - 1])
+            output[i] = (10 - previous)
+
+        if is_rune_strike:
+            output[i] = 10
+
+        is_rune_integer = not is_rune_miss and not is_rune_spare and not is_rune_strike
+        if is_rune_integer:
+            output[i] = int(rune)
+
+    return output
+
+if __name__ == '__main__':
+    convert_string_to_integer_list('5/5/5/5/5/5/5/5/5/5/5')
